@@ -1,0 +1,292 @@
+[
+  {
+    "id": 2,
+    "title": "Car Booking System",
+    "description": "A modern car rental and booking platform with real-time availability, booking management, and payment processing. Features user authentication and admin dashboard.",
+    "longDescription": "Built a comprehensive car booking system with real-time availability tracking, booking management, and secure payment processing. The platform includes user authentication, admin dashboard for fleet management, booking history, and review system. Features responsive design and integration with payment gateways for seamless transactions.",
+    "image": "/uploads/project-1753704648887-tfkd65xvyug.png",
+    "technologies": [
+      "TypeScript",
+      "Next JS",
+      "Tailwind CSS"
+    ],
+    "liveDemo": "https://car-booking-iota-flax.vercel.app/",
+    "github": "https://github.com/roshan-ican/Car-booking",
+    "features": [
+      "Booking Management",
+      "Payment Processing",
+      "Admin Dashboard",
+      "User Authentication",
+      "Review System",
+      "Browse available cars",
+      "Search functionality",
+      "Rental booking form",
+      "Modern, responsive design",
+      "Fast performance with Next.js",
+      "Built-in API routes"
+    ],
+    "gradient": "from-purple-500 to-pink-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T11:37:40.427Z",
+    "updatedAt": "2025-07-28T12:13:30.933Z"
+  },
+  {
+    "id": 3,
+    "title": "Travel Agency Platform",
+    "description": "A comprehensive travel booking platform with tour packages, booking management, and travel planning features. Live demo available with modern UI/UX.",
+    "longDescription": "Developed a full-featured travel agency platform with tour package management, booking system, and travel planning tools. The platform includes user authentication, admin dashboard for tour management, booking history, and payment processing. Features modern responsive design and integration with travel APIs.",
+    "image": "/uploads/project-1753704874461-lm75b9f586f.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Travel APIs",
+      "Booking System",
+      "Payment Integration"
+    ],
+    "liveDemo": "https://travel-agency-egmf.vercel.app/",
+    "github": "https://github.com/roshan-ican/travel-agency",
+    "features": [
+      "Tour Package Management",
+      "Booking System",
+      "Travel Planning",
+      "Payment Processing",
+      "Admin Dashboard",
+      "Responsive Design"
+    ],
+    "gradient": "from-green-500 to-emerald-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T11:37:40.427Z",
+    "updatedAt": "2025-07-28T12:14:49.726Z"
+  },
+  {
+    "id": 1,
+    "title": "Medical E-commerce Platform",
+    "description": "A comprehensive e-commerce platform specifically designed for medical supplies and healthcare products. Features secure payment processing, inventory management, and healthcare compliance.",
+    "longDescription": "Developed a specialized e-commerce platform for medical supplies with healthcare-specific features including prescription management, medical device categorization, and compliance with healthcare regulations. The platform includes secure payment processing, real-time inventory tracking, and integration with healthcare providers. Features responsive design optimized for medical professionals and patients.",
+    "image": "/uploads/project-1753713594563-dqcbm6dom3.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "E-commerce",
+      "Healthcare",
+      "Payment Integration"
+    ],
+    "liveDemo": "https://medical-ecommerce-eight.vercel.app/",
+    "github": "https://github.com/roshan-ican/medical-ecommerce",
+    "features": [
+      "Medical Product Catalog",
+      "Prescription Management",
+      "Secure Payment Processing",
+      "Healthcare Compliance",
+      "Inventory Management",
+      "Provider Integration"
+    ],
+    "gradient": "from-blue-500 to-cyan-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T13:29:45.596Z",
+    "updatedAt": "2025-07-28T14:39:54.963Z"
+  },
+  {
+    "id": 6,
+    "title": "Digital Banking Platform",
+    "description": "A modern digital banking application with account management, transactions, and financial services. Features secure authentication and real-time updates.",
+    "longDescription": "Developed a comprehensive digital banking platform with account management, transaction processing, and financial services. The platform includes secure authentication, real-time transaction updates, account statements, and fund transfer capabilities. Features modern UI/UX with focus on security and user experience.",
+    "image": "/uploads/project-1753725884318-rdbmlmm9gd.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next JS",
+      "Tailwind css"
+    ],
+    "liveDemo": "https://github.com/roshan-ican/DIGITAL-AGENCY",
+    "github": "https://github.com/roshan-ican/Digibank",
+    "features": [
+      "Account Management",
+      "Transaction Processing",
+      "Fund Transfers",
+      "Security Features",
+      "Real-time Updates",
+      "Account Statements"
+    ],
+    "gradient": "from-indigo-500 to-purple-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:05:38.862Z"
+  },
+  {
+    "id": 4,
+    "title": "Furniture E-commerce",
+    "description": "A specialized e-commerce platform for furniture with product catalog, shopping cart, and payment integration. Features modern design and user experience.",
+    "longDescription": "Created a dedicated e-commerce platform for furniture with comprehensive product catalog, shopping cart functionality, and secure payment processing. The platform includes user authentication, admin dashboard for inventory management, order processing, and analytics. Features responsive design optimized for furniture shopping experience.",
+    "image": "/uploads/project-1753725986217-y9fttxds6t.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "E-commerce",
+      "Payment Integration",
+      "Inventory Management"
+    ],
+    "liveDemo": "https://ecommerce-furniture-dun.vercel.app/",
+    "github": "https://github.com/roshan-ican/ecommerce-furniture",
+    "features": [
+      "Furniture Catalog",
+      "Shopping Cart",
+      "Payment Processing",
+      "Admin Dashboard",
+      "Order Management",
+      "Inventory Tracking"
+    ],
+    "gradient": "from-orange-500 to-red-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:06:38.039Z"
+  },
+  {
+    "id": 7,
+    "title": "Movie Website",
+    "description": "A comprehensive movie browsing and information platform with search, filtering, and detailed movie information. Live demo available.",
+    "longDescription": "Created a feature-rich movie website with comprehensive movie database, search functionality, and detailed movie information. The platform includes movie ratings, reviews, trailers, and filtering options. Features responsive design and integration with movie APIs for real-time data.",
+    "image": "/uploads/project-1753726038155-txzsjx5ng8g.png",
+    "technologies": [
+      "JavaScript",
+      "React",
+      "Material-UI",
+      "Styled Components",
+      "Movie APIs",
+      "Lodash"
+    ],
+    "liveDemo": "https://movie-website-cj98.vercel.app/",
+    "github": "https://github.com/roshan-ican/Movie-website",
+    "features": [
+      "Movie Database",
+      "Search & Filter",
+      "Movie Details",
+      "Ratings & Reviews",
+      "Trailer Integration",
+      "Responsive Design"
+    ],
+    "gradient": "from-red-500 to-pink-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:07:28.214Z"
+  },
+  {
+    "id": 8,
+    "title": "Real Estate Platform",
+    "description": "A modern real estate platform with property listings, search functionality, and property management features. Live demo available.",
+    "longDescription": "Built a comprehensive real estate platform with property listings, advanced search functionality, and property management tools. The platform includes property details, image galleries, contact forms, and admin dashboard. Features modern design with Chakra UI and integration with real estate APIs.",
+    "image": "/uploads/project-1753726070253-qhgncqkz0t.png",
+    "technologies": [
+      "JavaScript",
+      "React",
+      "Next.js",
+      "Chakra UI",
+      "Real Estate APIs",
+      "Millify"
+    ],
+    "liveDemo": "https://real-estate-oiz1.vercel.app/",
+    "github": "https://github.com/roshan-ican/Real-Estate",
+    "features": [
+      "Property Listings",
+      "Advanced Search",
+      "Property Details",
+      "Image Galleries",
+      "Contact Forms",
+      "Admin Dashboard"
+    ],
+    "gradient": "from-teal-500 to-cyan-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:07:56.314Z"
+  },
+  {
+    "id": 9,
+    "title": "Digital Agency Website",
+    "description": "A modern website for digital agency services with portfolio showcase, service offerings, and contact management.",
+    "longDescription": "Designed and developed a modern website for digital agency services with portfolio showcase, service offerings, and contact management. The website includes responsive design, smooth animations, and modern UI/UX. Features contact forms, service descriptions, and portfolio gallery.",
+    "image": "/uploads/project-1753726100048-exow885b7ov.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Modern UI/UX",
+      "Responsive Design",
+      "Animations"
+    ],
+    "liveDemo": "https://cheerful-queijadas-5deae6.netlify.app/",
+    "github": "https://github.com/roshan-ican/DIGITAL-AGENCY",
+    "features": [
+      "Portfolio Showcase",
+      "Service Offerings",
+      "Contact Management",
+      "Responsive Design",
+      "Modern UI/UX",
+      "Smooth Animations"
+    ],
+    "gradient": "from-violet-500 to-purple-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:09:08.004Z"
+  },
+  {
+    "id": 10,
+    "title": "Sweet Delights Bakery",
+    "description": "An e-commerce platform for bakery products with online ordering, payment processing, and delivery management.",
+    "longDescription": "Developed a specialized e-commerce platform for bakery products with online ordering system, payment processing, and delivery management. The platform includes product catalog, shopping cart, order tracking, and admin dashboard for inventory and order management.",
+    "image": "/uploads/project-1753726173226-hbztsj5aoot.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "E-commerce",
+      "Payment Integration",
+      "Order Management"
+    ],
+    "liveDemo": "https://sweet-delights-orcin.vercel.app/",
+    "github": "https://github.com/roshan-ican/Sweet-Delights",
+    "features": [
+      "Product Catalog",
+      "Online Ordering",
+      "Payment Processing",
+      "Order Tracking",
+      "Delivery Management",
+      "Admin Dashboard"
+    ],
+    "gradient": "from-pink-500 to-rose-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:10:00.882Z"
+  },
+  {
+    "id": 11,
+    "title": "Medical Store Management",
+    "description": "A comprehensive medical store management system with inventory tracking, sales management, and reporting features.",
+    "longDescription": "Built a complete medical store management system with inventory tracking, sales management, and comprehensive reporting. The system includes stock management, sales tracking, customer management, and financial reporting. Features user authentication and role-based access control.",
+    "image": "/uploads/project-1753726229885-zq392flzcqm.png",
+    "technologies": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Inventory Management",
+      "Sales Tracking",
+      "Reporting System"
+    ],
+    "liveDemo": "https://sweet-delights-orcin.vercel.app/",
+    "github": "https://github.com/roshan-ican/medical-store",
+    "features": [
+      "Inventory Management",
+      "Sales Tracking",
+      "Customer Management",
+      "Financial Reporting",
+      "Stock Alerts",
+      "User Authentication"
+    ],
+    "gradient": "from-emerald-500 to-teal-500",
+    "status": "Completed",
+    "createdAt": "2025-07-28T14:43:14.158Z",
+    "updatedAt": "2025-07-28T18:10:50.998Z"
+  }
+]
