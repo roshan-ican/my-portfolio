@@ -419,7 +419,7 @@ const ProjectsPage = () => {
           {[
             { label: "Projects Completed", value: `${projects.length}+` },
             { label: "Technologies Used", value: "20+" },
-            { label: "Years Experience", value: "2+" },
+            { label: "Years Experience", value: "3+" },
             { label: "Success Rate", value: "100%" },
           ].map((stat, index) => (
             <motion.div
