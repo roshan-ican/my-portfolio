@@ -36,23 +36,23 @@ const DigitalBackground = ({
     }>
   >([]);
 
-  // Solo Leveling color palette - Blue and Black theme
+  // Luxury palette nodes (Royal, Gold, Champagne, Burgundy)
   const nodeColors = [
-    { light: "bg-blue-400", dark: "dark:bg-blue-300" },
-    { light: "bg-blue-500", dark: "dark:bg-blue-400" },
-    { light: "bg-cyan-400", dark: "dark:bg-cyan-300" },
-    { light: "bg-blue-600", dark: "dark:bg-blue-500" },
-    { light: "bg-sky-400", dark: "dark:bg-sky-300" },
-    { light: "bg-indigo-500", dark: "dark:bg-indigo-400" },
+    { light: "bg-royal", dark: "dark:bg-royal" },
+    { light: "bg-gold", dark: "dark:bg-gold" },
+    { light: "bg-champagne", dark: "dark:bg-champagne" },
+    { light: "bg-burgundy", dark: "dark:bg-burgundy" },
+    { light: "bg-royal", dark: "dark:bg-royal" },
+    { light: "bg-gold", dark: "dark:bg-gold" },
   ];
 
   const connectionGradients = [
-    { light: "from-blue-500/60 to-cyan-400/60", dark: "dark:from-blue-400/60 dark:to-cyan-300/60" },
-    { light: "from-cyan-400/60 to-blue-600/60", dark: "dark:from-cyan-300/60 dark:to-blue-500/60" },
-    { light: "from-blue-400/60 to-indigo-500/60", dark: "dark:from-blue-300/60 dark:to-indigo-400/60" },
-    { light: "from-indigo-500/60 to-cyan-400/60", dark: "dark:from-indigo-400/60 dark:to-cyan-300/60" },
-    { light: "from-sky-400/60 to-blue-500/60", dark: "dark:from-sky-300/60 dark:to-blue-400/60" },
-    { light: "from-blue-600/60 to-sky-400/60", dark: "dark:from-blue-500/60 dark:to-sky-300/60" },
+    { light: "from-royal/60 to-gold/60", dark: "dark:from-royal/60 dark:to-gold/60" },
+    { light: "from-gold/50 to-champagne/60", dark: "dark:from-gold/50 dark:to-champagne/60" },
+    { light: "from-burgundy/50 to-royal/60", dark: "dark:from-burgundy/50 dark:to-royal/60" },
+    { light: "from-royal/60 to-champagne/60", dark: "dark:from-royal/60 dark:to-champagne/60" },
+    { light: "from-gold/50 to-royal/60", dark: "dark:from-gold/50 dark:to-royal/60" },
+    { light: "from-champagne/60 to-royal/60", dark: "dark:from-champagne/60 dark:to-royal/60" },
   ];
 
   useEffect(() => {
@@ -82,30 +82,32 @@ const DigitalBackground = ({
 
   return (
     <div id={id} className={`relative overflow-hidden ${className}`}>
-      {/* Solo Leveling Dark Blue & Black Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-black to-blue-950 dark:from-black dark:via-slate-950 dark:to-blue-950 z-10">
+      {/* Luxury patterned background */}
+      <div className="absolute inset-0 z-10 bg-luxury-pattern">
         
-        {/* Dark Vignette Edges */}
-        <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/30 to-black/60 pointer-events-none"></div>
+        {/* Vignette */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.55) 100%)"
+        }}></div>
 
-        {/* Epic Blue Glow Elements - Solo Leveling style */}
-        <motion.div
-          animate={{ opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-blue-600/30 via-blue-500/15 to-transparent rounded-full blur-3xl pointer-events-none"
-        ></motion.div>
-
+        {/* Elegant glow elements */}
         <motion.div
           animate={{ opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-cyan-500/25 via-blue-600/15 to-transparent rounded-full blur-3xl pointer-events-none"
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-royal/30 via-royal/10 to-transparent rounded-full blur-3xl pointer-events-none"
         ></motion.div>
 
-        {/* Additional Dark Blue Accent */}
         <motion.div
-          animate={{ opacity: [0.15, 0.35, 0.15] }}
+          animate={{ opacity: [0.15, 0.4, 0.15] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-gold/20 via-champagne/10 to-transparent rounded-full blur-3xl pointer-events-none"
+        ></motion.div>
+
+        {/* Burgundy accent */}
+        <motion.div
+          animate={{ opacity: [0.1, 0.3, 0.1] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-gradient-to-br from-indigo-600/20 to-transparent rounded-full blur-3xl pointer-events-none"
+          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-gradient-to-br from-burgundy/20 to-transparent rounded-full blur-3xl pointer-events-none"
         ></motion.div>
 
         {/* Network Nodes */}
@@ -171,16 +173,16 @@ const DigitalBackground = ({
             />
           ))}
 
-        {/* Floating Blue Particles */}
+        {/* Floating particles */}
         {Array.from({ length: 12 }).map((_, i) => (
           <motion.div
             key={`particle-${i}`}
             className={`absolute w-1.5 h-1.5 rounded-full ${
               i % 3 === 0
-                ? "bg-blue-400/50 shadow-lg shadow-blue-400/50"
+                ? "bg-royal/50 shadow-lg shadow-royal/50"
                 : i % 3 === 1
-                ? "bg-cyan-400/40 shadow-md shadow-cyan-400/40"
-                : "bg-indigo-500/50 shadow-lg shadow-indigo-500/50"
+                ? "bg-gold/40 shadow-md shadow-gold/40"
+                : "bg-champagne/50 shadow-lg shadow-champagne/50"
             }`}
             style={{
               left: `${Math.random() * 100}%`,
@@ -200,14 +202,14 @@ const DigitalBackground = ({
           />
         ))}
 
-        {/* Pulsing Blue Orbs */}
+        {/* Pulsing orbs */}
         {Array.from({ length: 6 }).map((_, i) => (
           <motion.div
             key={`orb-${i}`}
             className={`absolute rounded-full ${
               i % 2 === 0
-                ? "bg-blue-400/30 shadow-2xl shadow-blue-400/60"
-                : "bg-cyan-400/20 shadow-xl shadow-cyan-400/40"
+                ? "bg-royal/30 shadow-2xl shadow-royal/60"
+                : "bg-gold/20 shadow-xl shadow-gold/40"
             }`}
             style={{
               left: `${15 + i * 18}%`,
@@ -228,11 +230,11 @@ const DigitalBackground = ({
           />
         ))}
 
-        {/* Scanning Lines Effect */}
+        {/* Scanning lines */}
         {Array.from({ length: 3 }).map((_, i) => (
           <motion.div
             key={`scan-${i}`}
-            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent"
+            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-royal/30 to-transparent"
             initial={{ top: "0%" }}
             animate={{ top: "100%" }}
             transition={{

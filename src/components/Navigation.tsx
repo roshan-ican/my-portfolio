@@ -82,7 +82,7 @@ const Navigation = () => {
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-2xl border-b border-gray-200/50 dark:border-gray-700/50"
+          ? "navbar-premium"
           : "bg-transparent"
       }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,10 +95,10 @@ const Navigation = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center">
+              className="w-8 h-8 bg-gradient-to-r from-royal to-gold rounded-lg flex items-center justify-center">
               <Sparkles size={16} className="text-white" />
             </motion.div>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            <span className="brand-contrast font-extrabold">
               Roshan
             </span>
           </motion.div>
@@ -117,14 +117,14 @@ const Navigation = () => {
                   y: -2,
                   transition: { type: "spring", stiffness: 400 },
                 }}
-                className="relative px-4 py-2 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-300 font-medium rounded-lg group">
+                className="relative px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 font-medium rounded-lg group">
                 {item.name}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-royal/10 to-gold/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   whileHover={{ scale: 1.05 }}
                 />
                 <motion.div
-                  className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 group-hover:w-full transition-all duration-300 transform -translate-x-1/2"
+                  className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-gold to-royal group-hover:w-full transition-all duration-300 transform -translate-x-1/2"
                   whileHover={{ width: "100%" }}
                 />
               </motion.button>
@@ -137,7 +137,7 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-lg border border-gray-200/50 dark:border-gray-700/50 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200">
+              className="p-2 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-border/50 text-gray-300 hover:text-white transition-colors duration-200">
               <AnimatePresence mode="wait">
                 {isOpen ? (
                   <motion.div
@@ -171,21 +171,17 @@ const Navigation = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-gray-200/50 dark:border-gray-700/50 overflow-hidden">
+              className="md:hidden bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-border/50 overflow-hidden">
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
                   variants={itemVariants}
                   onClick={() => scrollToSection(item.href)}
-                  whileHover={{
-                    x: 10,
-                    backgroundColor: "rgba(59, 130, 246, 0.1)",
-                    transition: { type: "spring", stiffness: 400 },
-                  }}
+                  whileHover={{ x: 10, transition: { type: "spring", stiffness: 400 } }}
                   className="block w-full text-left px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-200 relative group">
                   {item.name}
                   <motion.div
-                    className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-gold to-royal opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     whileHover={{ opacity: 1 }}
                   />
                 </motion.button>

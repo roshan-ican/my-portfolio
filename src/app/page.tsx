@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import GitHubStats from "@/components/GithubStats";
 
 // Seeded random number generator for consistent values
 function seededRandom(seed: number) {
@@ -115,6 +116,7 @@ export default function Home() {
           <Skills />
           <Experience />
           <Projects />
+          <GitHubStats />
           <Contact />
           <Footer />
         </div>

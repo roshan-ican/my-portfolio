@@ -25,7 +25,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 text-white relative">
+    <footer className="bg-background text-foreground relative navbar-premium">
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -54,7 +54,7 @@ const Footer = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.2 }}
-                  className="text-gray-400 hover:text-white transition-colors duration-200"
+                  className="text-gray-300 hover:text-white transition-colors duration-200"
                   aria-label={social.label}>
                   {social.icon}
                 </motion.a>
@@ -86,8 +86,8 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-4 pt-4 border-t border-gray-800 text-center">
-          <p className="text-gray-400 text-xs flex items-center justify-center gap-2">
+          className="mt-4 pt-4 border-t border-border text-center">
+          <p className="text-gray-300 text-xs flex items-center justify-center gap-2">
             © {currentYear} Roshan Sahani. Made with{" "}
             <Heart className="w-3 h-3 text-red-500 fill-current" /> in San
             Francisco

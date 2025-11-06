@@ -32,31 +32,31 @@ const Hero = () => {
   };
 
   const floatingIcons = [
-    { icon: Code, delay: 0, color: "from-indigo-500 to-purple-500" },
-    { icon: Zap, delay: 0.5, color: "from-pink-500 to-rose-500" },
-    { icon: Sparkles, delay: 1, color: "from-cyan-500 to-blue-500" },
+    { icon: Code, delay: 0, color: "from-royal to-champagne" },
+    { icon: Zap, delay: 0.5, color: "from-burgundy to-gold" },
+    { icon: Sparkles, delay: 1, color: "from-champagne to-royal" },
   ];
 
   const techCards = [
     {
       icon: Database,
       label: "Distributed Systems",
-      color: "from-blue-500 to-cyan-500",
+      color: "from-royal to-champagne",
     },
     {
       icon: Code,
       label: "Microservices",
-      color: "from-purple-500 to-pink-500",
+      color: "from-burgundy to-royal",
     },
     {
       icon: Cpu,
       label: "Event-Driven",
-      color: "from-green-500 to-emerald-500",
+      color: "from-gold to-champagne",
     },
     {
       icon: Globe,
       label: "Cloud Native",
-      color: "from-orange-500 to-red-500",
+      color: "from-royal to-burgundy",
     },
   ];
 
@@ -104,7 +104,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-full text-blue-600 dark:text-blue-400 backdrop-blur-sm">
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-royal/10 to-midnight/10 border border-royal/30 rounded-full text-royal backdrop-blur-sm">
               <Sparkles size={16} />
               <span className="text-sm font-medium">
                 Google Hackathon 2025 Finalist • Google Agentic AI
@@ -121,7 +121,7 @@ const Hero = () => {
                 <span className="text-gray-900 dark:text-white">
                   Hi, I&apos;m{" "}
                 </span>
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-royal via-champagne to-gold bg-clip-text text-transparent">
                   Roshan Sahani
                 </span>
               </h1>
@@ -159,11 +159,11 @@ const Hero = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5 + index * 0.1 }}
-                  className="text-center p-3 rounded-lg bg-white/50 dark:bg-gray-800/50 border border-gray-200/50 dark:border-gray-700/50 backdrop-blur-sm">
-                  <p className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  className="text-center p-3 rounded-lg bg-white/5 dark:bg-black/20 border border-border/50 backdrop-blur-sm">
+                  <p className="text-xl font-bold bg-gradient-to-r from-royal to-gold bg-clip-text text-transparent">
                     {stat.value}
                   </p>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                  <p className="text-xs text-gray-300 mt-1">
                     {stat.label}
                   </p>
                 </motion.div>
@@ -183,10 +183,10 @@ const Hero = () => {
                   boxShadow: "0 20px 40px rgba(147, 51, 234, 0.3)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl font-semibold overflow-hidden">
+                className="group relative px-8 py-4 btn-primary rounded-xl font-semibold overflow-hidden">
                 <span className="relative z-10">View My Work</span>
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600"
+                  className="absolute inset-0"
                   initial={{ x: "-100%" }}
                   whileHover={{ x: 0 }}
                   transition={{ duration: 0.3 }}
@@ -199,7 +199,7 @@ const Hero = () => {
                   backgroundColor: "rgba(156, 163, 175, 0.2)",
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300">
+                className="px-8 py-4 btn-secondary rounded-xl font-semibold transition-all duration-300">
                 View Experience
               </motion.button>
             </motion.div>
@@ -238,7 +238,7 @@ const Hero = () => {
                     boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-xl border border-gray-200/50 dark:border-gray-700/50 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">
+                  className="p-3 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-xl border border-border/50 text-gray-300 hover:text-gold transition-all duration-300">
                   <social.icon size={20} />
                 </motion.a>
               ))}
@@ -255,19 +255,19 @@ const Hero = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute w-96 h-96 border-2 border-cyan-500/20 rounded-full"></motion.div>
+              className="absolute w-96 h-96 border-2 border-royal/20 rounded-full"></motion.div>
 
             {/* Middle Rotating Circle */}
             <motion.div
               animate={{ rotate: -360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute w-80 h-80 border-2 border-blue-500/25 rounded-full"></motion.div>
+              className="absolute w-80 h-80 border-2 border-gold/20 rounded-full"></motion.div>
 
             {/* Inner Rotating Circle (opposite direction) */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute w-64 h-64 border-2 border-purple-500/30 rounded-full"></motion.div>
+              className="absolute w-64 h-64 border-2 border-burgundy/25 rounded-full"></motion.div>
 
             {/* Floating Tech Cards - Spread Out Circularly */}
             {techCards.map((card, index) => {
@@ -293,13 +293,13 @@ const Hero = () => {
                       ease: "easeInOut",
                     }}
                     className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                    <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-r from-royal/20 to-gold/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                    <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-xl p-4 border border-border/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
                       <div
                         className={`w-12 h-12 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center mb-3`}>
                         <card.icon className="w-6 h-6 text-white" />
                       </div>
-                      <p className="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                      <p className="text-sm font-medium text-gray-300 whitespace-nowrap">
                         {card.label}
                       </p>
                     </div>
@@ -344,9 +344,9 @@ const Hero = () => {
               transition={{ delay: 1.2 }}
               whileHover={{ scale: 1.08 }}
               className="relative z-10">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-1 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-r from-royal via-champagne to-gold p-1 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+                <div className="w-full h-full rounded-full bg-white/5 dark:bg-black/20 flex items-center justify-center">
+                  <div className="text-4xl font-bold bg-gradient-to-r from-royal via-champagne to-gold bg-clip-text text-transparent">
                     RS
                   </div>
                 </div>

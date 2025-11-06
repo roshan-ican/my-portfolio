@@ -92,14 +92,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={`${inter.variable} dark`} suppressHydrationWarning>
       <head>
         {/* Additional SEO and Performance Tags */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
-        <meta name="theme-color" content="#1f2937" />
+        <meta name="theme-color" content="#191970" />
         <meta name="color-scheme" content="dark light" />
 
         {/* Preconnect to external domains */}
@@ -168,7 +168,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="//fonts.googleapis.com" />
         <link rel="dns-prefetch" href="//fonts.gstatic.com" />
       </head>
-      <body className={`${inter.className} antialiased dark`}>
+      <body className={`${inter.className} antialiased dark bg-hero-luxury`}>
         {children}
 
         {/* Analytics Script (uncomment and add your tracking ID) */}
