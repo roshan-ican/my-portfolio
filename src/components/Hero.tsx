@@ -175,7 +175,7 @@ const Hero = () => {
               transition={{ delay: 0.45 }}
               className="grid grid-cols-3 gap-3 sm:gap-4 max-w-md mx-auto lg:mx-0">
               {[
-                { value: "2+", label: "Years Experience" },
+                { value: "3+", label: "Years Experience" },
                 { value: "30M+", label: "Txns Processed" },
                 { value: "100%", label: "Client Satisfaction" },
               ].map((stat, index) => (
