@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Building, GraduationCap } from "lucide-react";
+import { Calendar, Building } from "lucide-react";
 import DigitalBackground from "./DigitalBackground";
 
 const Experience = () => {
@@ -87,60 +87,6 @@ const Experience = () => {
     },
   ];
 
-  const education = [
-    {
-      id: 1,
-      title: "Senior Secondary Certification (CBSE)",
-      institution: "Central Board of Secondary Education",
-      location: "Gangtok, Sikkim",
-      period: "2017 - 2021",
-      type: "education",
-      description:
-        "Secondary education with focus on foundational computer science and mathematics concepts.",
-      achievements: [
-        "Completed CBSE curriculum with strong foundation in mathematics and science",
-        "Developed early interest in technology and problem-solving",
-      ],
-      technologies: [
-        "Mathematics",
-        "Science",
-        "Computer Science",
-        "Problem Solving",
-      ],
-      gradient: "from-indigo-500 to-black",
-    },
-    {
-      id: 2,
-      title: "Self-Taught Software Development",
-      institution: "Online Learning & Practice",
-      location: "Remote",
-      period: "2021 - Present",
-      type: "education",
-      description:
-        "Continuous self-driven learning through online courses, certifications, and practical project experience. Mastered full-stack development, distributed systems architecture, and modern cloud technologies.",
-      achievements: [
-        "Completed The Complete Python Bootcamp: Zero to Hero (Udemy)",
-        "Completed Namaste React course (NamasteDev)",
-        "Completed JavaScript Algorithms & Data Structures (freeCodeCamp)",
-        "Completed Responsive Web Design certification (freeCodeCamp)",
-        "Completed Linux Shells and Processes (LinkedIn Learning)",
-        "Google Agentic AI Hackathon 2025 - Top 3.3% (60,000 out of 200,000 teams)",
-      ],
-      technologies: [
-        "Python",
-        "JavaScript",
-        "React",
-        "Node.js",
-        "Distributed Systems",
-        "Microservices",
-        "Cloud Architecture",
-        "Docker",
-        "Kubernetes",
-      ],
-      gradient: "from-blue-400 to-black",
-    },
-  ];
-
   return (
     <DigitalBackground id="experience" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,7 +101,7 @@ const Experience = () => {
             whileInView={{ scale: [0.9, 1] }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}>
-            Experience & Education
+            Work Experience
           </motion.h2>
           <motion.div
             className="w-24 h-1 bg-gradient-to-r from-blue-500 to-black mx-auto mb-4"
@@ -180,13 +126,12 @@ const Experience = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-20">
+          viewport={{ once: true }}>
           <motion.h3
             variants={itemVariants}
             className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
             <Building className="w-6 h-6 text-blue-400" />
-            Work Experience
+            Experience
           </motion.h3>
 
           <div className="relative">
@@ -304,98 +249,6 @@ const Experience = () => {
                 </motion.div>
               ))}
             </div>
-          </div>
-        </motion.div>
-
-        {/* Education */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="mb-16">
-          <motion.h3
-            variants={itemVariants}
-            className="text-2xl font-semibold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
-            <GraduationCap className="w-6 h-6 text-cyan-400" />
-            Education
-          </motion.h3>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {education.map((edu) => (
-              <motion.div
-                key={edu.id}
-                variants={itemVariants}
-                whileHover={{
-                  scale: 1.02,
-                  y: -5,
-                  transition: { type: "spring" as const, stiffness: 300 },
-                }}
-                className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-200 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600/50 transition-all duration-300 relative overflow-hidden group">
-                {/* Gradient overlay */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${edu.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-
-                <div className="relative z-10">
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                    {edu.title}
-                  </h4>
-                  <p
-                    className={`text-md font-medium bg-gradient-to-r ${edu.gradient} bg-clip-text text-transparent mb-2`}>
-                    {edu.institution}
-                  </p>
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-400 mb-4">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-4 h-4" />
-                      {edu.period}
-                    </span>
-                  </div>
-
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    {edu.description}
-                  </p>
-
-                  {/* Achievements */}
-                  <ul className="space-y-1 mb-4">
-                    {edu.achievements.map((achievement, achievementIndex) => (
-                      <motion.li
-                        key={achievementIndex}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{
-                          duration: 0.3,
-                          delay: achievementIndex * 0.1,
-                        }}
-                        viewport={{ once: true }}
-                        className="text-sm text-gray-600 dark:text-gray-400 flex items-start gap-2">
-                        <div
-                          className={`w-1.5 h-1.5 bg-gradient-to-r ${edu.gradient} rounded-full mt-2 flex-shrink-0`}></div>
-                        {achievement}
-                      </motion.li>
-                    ))}
-                  </ul>
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-2">
-                    {edu.technologies.map((tech, techIndex) => (
-                      <motion.span
-                        key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          duration: 0.3,
-                          delay: techIndex * 0.05,
-                        }}
-                        viewport={{ once: true }}
-                        whileHover={{ scale: 1.1 }}
-                        className="bg-gradient-to-r from-blue-500/20 via-cyan-500/20 to-black/20 text-gray-800 dark:text-gray-200 px-2 py-1 rounded text-xs font-medium backdrop-blur-sm border border-blue-400/50 dark:border-blue-300/50 hover:border-cyan-400/70 dark:hover:border-cyan-300/70 hover:from-cyan-500/30 hover:via-blue-500/30 hover:to-black/30 transition-all duration-300 shadow-sm hover:shadow-md">
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
           </div>
         </motion.div>
       </div>

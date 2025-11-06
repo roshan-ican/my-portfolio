@@ -298,17 +298,17 @@ const Skills = () => {
 
   if (!isClient) {
     return (
-      <DigitalBackground id="skills" className="py-24">
+      <DigitalBackground id="skills" className="py-16 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          <div className="text-center mb-16 sm:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
               My Technical
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                 {" "}
                 Expertise
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2">
               Distributed systems architect with expertise in microservices,
               event-driven architectures, and high-performance data platforms.
             </p>
@@ -319,7 +319,7 @@ const Skills = () => {
   }
 
   return (
-    <DigitalBackground id="skills" className="py-24">
+    <DigitalBackground id="skills" className="py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -327,9 +327,9 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20">
+          className="text-center mb-12 sm:mb-20">
           <motion.h2
-            className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -342,7 +342,7 @@ const Skills = () => {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -360,7 +360,7 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
               key={category.title}
@@ -381,9 +381,9 @@ const Skills = () => {
               <motion.div
                 whileHover={{ rotateY: 5, rotateX: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="bg-white/70 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl shadow-2xl p-4 border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden group">
+                className="bg-white/70 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 border border-gray-200/50 dark:border-gray-700/50 relative overflow-hidden group">
                 {/* Glittering background effect */}
-                <div className="absolute inset-0 overflow-hidden rounded-3xl">
+                <div className="absolute inset-0 overflow-hidden rounded-2xl sm:rounded-3xl">
                   {category.title === "Backend & Distributed Systems" && (
                     <>
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-cyan-400/20 to-teal-400/20 animate-pulse"></div>
@@ -482,14 +482,14 @@ const Skills = () => {
                 <div className="relative z-10">
                   {/* Category Header */}
                   <motion.div
-                    className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-10 sm:w-12 h-10 sm:h-12 bg-gradient-to-r ${category.color} rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}>
-                    <category.icon size={24} className="text-white" />
+                    <category.icon size={20} className="sm:w-6 sm:h-6 text-white" />
                   </motion.div>
 
                   <motion.h3
-                    className="text-xl font-bold text-gray-900 dark:text-white mb-6 text-center"
+                    className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-5 sm:mb-6 text-center"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400 }}>
                     {category.title}
@@ -511,15 +511,15 @@ const Skills = () => {
                         }}
                         viewport={{ once: true }}
                         whileHover={{ x: 8 }}
-                        className="group flex items-center gap-3 p-2 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 cursor-default">
+                        className="group flex items-center gap-2 sm:gap-3 p-2 rounded-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 cursor-default">
                         <div
-                          className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} shadow-sm group-hover:scale-110 transition-transform duration-300`}
+                          className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gradient-to-r ${category.color} shadow-sm group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}
                         />
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 flex-1">
+                        <span className="text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-300 flex-1">
                           {skill.name}
                         </span>
                         <div
-                          className={`w-5 h-0.5 rounded-full bg-gradient-to-r ${category.color} opacity-40 group-hover:opacity-70 transition-opacity duration-300`}
+                          className={`w-4 sm:w-5 h-0.5 rounded-full bg-gradient-to-r ${category.color} opacity-40 group-hover:opacity-70 transition-opacity duration-300 flex-shrink-0`}
                         />
                       </motion.div>
                     ))}
@@ -536,16 +536,16 @@ const Skills = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-20 text-center">
+          className="mt-12 sm:mt-20 text-center">
           <motion.h3
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-8"
+            className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.9 }}
             viewport={{ once: true }}>
             Core Competencies
           </motion.h3>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
             {[
               "Microservices Architecture",
               "System Design",
@@ -581,7 +581,7 @@ const Skills = () => {
                   boxShadow:
                     "0 15px 35px rgba(147, 51, 234, 0.3)",
                 }}
-                className="bg-gradient-to-r from-blue-600/50 to-cyan-600/50 dark:from-blue-400/50 dark:to-cyan-400/50 to-blue-500/20 backdrop-blur-sm text-gray-800 dark:text-gray-200 px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 cursor-default border border-blue-400/50 dark:border-purple-300/50 hover:border-pink-400/70 dark:hover:border-pink-300/70 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-blue-500/30 hover:shadow-lg">
+                className="bg-gradient-to-r from-blue-600/50 to-cyan-600/50 dark:from-blue-400/50 dark:to-cyan-400/50 to-blue-500/20 backdrop-blur-sm text-gray-800 dark:text-gray-200 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 cursor-default border border-blue-400/50 dark:border-purple-300/50 hover:border-pink-400/70 dark:hover:border-pink-300/70 hover:from-pink-500/30 hover:via-purple-500/30 hover:to-blue-500/30 hover:shadow-lg">
                 {skill}
               </motion.span>
             ))}

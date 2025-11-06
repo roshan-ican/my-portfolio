@@ -10,7 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://roshan-portfolio.vercel.app"),
-  title: "Roshan Sahani - Senior Software Engineer | Distributed Systems, Microservices, Node.js",
+  title: "Senior Software Engineer | Distributed Systems, Microservices, Node.js",
   description:
     "Senior Software Engineer and Technical Architect specializing in distributed systems, microservices architecture, and data-intensive platforms. Expert in Node.js, TypeScript, Kafka, Redis, and cloud-native infrastructure. Google Hackathon finalist.",
   keywords: [

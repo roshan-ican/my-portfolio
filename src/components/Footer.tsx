@@ -36,9 +36,6 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
             className="text-center md:text-left">
-            <h3 className="text-lg font-bold gradient-text mb-2">
-              Roshan Sahani
-            </h3>
             <p className="text-gray-300 text-sm mb-3 max-w-md">
               Full Stack Developer who belives that ideas can be turn into reality.
             </p>
