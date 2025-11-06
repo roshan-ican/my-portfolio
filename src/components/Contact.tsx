@@ -159,7 +159,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       label: "Phone",
-      value: "+91 9497153064",
+      value: "+91 6297668173",
       href: "tel:+916297668173",
       gradient: "from-green-500 to-emerald-500",
     },
