@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import {
   Database,
-  Smartphone,
   User,
   Globe,
   Zap,
@@ -91,7 +90,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                I'm Roshan Sahani, a Fullstack Software Engineer based in Bengaluru, India. With a proven track record in crafting high-stakes platforms, I design and deliver resilient architectures that power millions of transactions with unyielding performance and precision.
+                I&apos;m Roshan Sahani, a Fullstack Software Engineer based in Bengaluru, India. With a proven track record in crafting high-stakes platforms, I design and deliver resilient architectures that power millions of transactions with unyielding performance and precision.
               </motion.p>
 
               <motion.p
@@ -100,7 +99,7 @@ const About = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
               >
-                I've orchestrated transformative migrations from monolithic legacies to cutting-edge TypeScript microservices, engineered Kafka-fueled pipelines devouring 30M+ records daily, and architected settlement engines mastering 200+ concurrent streams with flawless deterministic ordering. The outcome? A 40% plunge in failures through battle-hardened resilience patterns like circuit breakers and adaptive backoff—unleashing systems that scale fearlessly and outperform under pressure.
+                I&apos;ve orchestrated transformative migrations from monolithic legacies to cutting-edge TypeScript microservices, engineered Kafka-fueled pipelines devouring 30M+ records daily, and architected settlement engines mastering 200+ concurrent streams with flawless deterministic ordering. The outcome? A 40% plunge in failures through battle-hardened resilience patterns like circuit breakers and adaptive backoff—unleashing systems that scale fearlessly and outperform under pressure.
               </motion.p>
 
               <motion.p
@@ -119,7 +118,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="font-medium text-white/80"
               >
-                Let's engineer the future: From elegant frontends to resilient backends and intelligent architectures, I build what endures, excels, and elevates—driving impact at every scale.
+                Let&apos;s engineer the future: From elegant frontends to resilient backends and intelligent architectures, I build what endures, excels, and elevates—driving impact at every scale.
               </motion.p>
 
               {/* Skills List */}
