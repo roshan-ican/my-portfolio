@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
   ArrowDown,
@@ -15,7 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import DigitalBackground from "./DigitalBackground";
+import DigitalBackground from "./DigitalBackground"; // Switched to alias the original for luxury/space hybrid feel
 
 const Hero = () => {
   const [time, setTime] = useState<string>("");
@@ -31,15 +30,14 @@ const Hero = () => {
         hour12: true,
       });
       setTime(timeString);
-
       const tzString = Intl.DateTimeFormat().resolvedOptions().timeZone;
       setTimezone(tzString);
     };
-
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -47,7 +45,6 @@ const Hero = () => {
       const elementPosition =
         element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navHeight;
-
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
@@ -55,186 +52,175 @@ const Hero = () => {
     }
   };
 
+  // Simplified floating icons with subtle space accents
   const floatingIcons = [
-    { icon: Code, delay: 0, color: "from-royal to-champagne" },
-    { icon: Zap, delay: 0.5, color: "from-burgundy to-gold" },
-    { icon: Sparkles, delay: 1, color: "from-champagne to-royal" },
+    { icon: Code, delay: 0, color: "bg-blue-400/20" },
+    { icon: Zap, delay: 0.5, color: "bg-purple-400/20" },
+    { icon: Sparkles, delay: 1, color: "bg-indigo-400/20" },
   ];
 
+  // Minimal tech cards with clean labels
   const techCards = [
     {
       icon: Database,
       label: "Distributed Systems",
-      color: "from-royal to-champagne",
+      color: "bg-blue-500/10",
     },
     {
       icon: Code,
       label: "Microservices",
-      color: "from-burgundy to-royal",
+      color: "bg-purple-500/10",
     },
     {
       icon: Cpu,
       label: "Event-Driven",
-      color: "from-gold to-champagne",
+      color: "bg-indigo-500/10",
     },
     {
       icon: Globe,
       label: "Cloud Native",
-      color: "from-royal to-burgundy",
+      color: "bg-cyan-500/10",
     },
   ];
 
-  // Seeded random number generator for consistent values
+  // Seeded random for consistent glitter (now subtle stars)
   const seededRandom = (seed: number) => {
     const x = Math.sin(seed) * 10000;
     return x - Math.floor(x);
   };
 
-  const glitterParticles = Array.from({ length: 12 }, (_, i) => ({
+  const glitterParticles = Array.from({ length: 8 }, (_, i) => ({
     id: i,
-    delay: i * 0.2,
+    delay: i * 0.3,
     position: {
       top: `${seededRandom(i + 1000) * 100}%`,
       left: `${seededRandom(i + 2000) * 100}%`,
     },
   }));
 
-  // Calculate positions for tech cards in a circular spread
+  // Calculate positions for tech cards in a gentle arc (less chaotic)
   const getCardPosition = (index: number) => {
     const totalCards = techCards.length;
-    const angle = (index / totalCards) * 360;
-    const radius = 35; // Distance from center in percentage
-    
+    const angle = (index / totalCards) * 180 - 45; // Gentle arc
+    const radius = 25; // Closer for minimalism
     const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
     const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
-    
     return { left: `${x}%`, top: `${y}%` };
   };
 
   return (
     <DigitalBackground
       id="home"
-      className="min-h-screen flex items-center justify-center pt-12 sm:pt-20 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-          {/* Left Content */}
+      className="min-h-screen flex items-center justify-center pt-12 sm:pt-20 relative overflow-hidden font-sans" // Added font-sans for minimalism
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"> {/* Reduced max-w for cleaner layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"> {/* Increased gap for breathing room */}
+          {/* Left Content - Minimal Typography */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }} // Subtler entrance
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-center lg:text-left space-y-6 sm:space-y-8">
-            {/* Live Time Badge */}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-center lg:text-left space-y-6" // Reduced space-y
+          >
+            {/* Live Time Badge - Subtle */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/20 rounded-full text-white/80 backdrop-blur-sm mx-auto lg:mx-0 text-xs font-medium" // Simplified colors
+            >
+              <Clock size={14} />
+              <span>{time && timezone ? `${time} • ${timezone}` : "Loading..."}</span>
+            </motion.div>
+
+            {/* Main Heading - Clean, Large Sans Serif */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-gradient-to-r from-royal/10 to-midnight/10 border border-royal/30 rounded-full text-royal backdrop-blur-sm mx-auto lg:mx-0">
-              <Clock size={14} className="sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm font-medium">
-                {time && timezone ? `${time} • ${timezone}` : "Loading..."}
-              </span>
-            </motion.div>
-
-            {/* Main Heading */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="space-y-3 sm:space-y-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
-                <span className="text-gray-900 dark:text-white">
-                  Hi, I&apos;m{" "}
-                </span>
-                <span className="bg-gradient-to-r from-royal via-champagne to-gold bg-clip-text text-transparent">
-                  Roshan Sahani
+              className="space-y-2" // Tighter spacing
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-light leading-tight text-white"> {/* Lighter font-weight for minimalism */}
+                <span>Hello,</span>
+                {/* <br /> */}
+                <span className="font-semibold bg-gradient-to-r from-blue-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent"> {/* Subtle space-themed gradient */}
+                  World
                 </span>
               </h1>
-              <h2 className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 font-medium px-2 sm:px-0">
+              <h2 className="text-lg sm:text-xl text-white/70 font-light"> {/* Lighter subtitle */}
                 Senior Software Engineer • Distributed Systems Architect
               </h2>
             </motion.div>
 
-            {/* Description */}
+            {/* Description - More Selling/Compelling Version */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed px-2 sm:px-0 mx-auto lg:mx-0">
-              Building scalable, high-performance distributed systems and
-              microservices architectures. Specializing in event-driven design,
-              real-time data pipelines, and cloud-native infrastructure.
-              <br/> Proven
-              track record processing millions of transactions reliably at
-              scale.
+              transition={{ delay: 0.3 }}
+              className="text-base text-white/60 max-w-md leading-relaxed" // Shorter max-w, lighter text
+            >
+              Crafting high-performance distributed systems and microservices that scale effortlessly with demand. Mastering event-driven architectures and cloud-native deployments to drive innovation and reliability.
+              <br />
+              Proven expertise in powering platforms that process millions of transactions daily—delivering speed, security, and unbreakable uptime.
             </motion.p>
 
-            {/* Stats */}
+            {/* Stats - Minimal Cards */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.45 }}
-              className="grid grid-cols-3 gap-3 sm:gap-4 max-w-md mx-auto lg:mx-0">
+              transition={{ delay: 0.4 }}
+              className="grid grid-cols-3 gap-4 max-w-sm mx-auto lg:mx-0"
+            >
               {[
-                { value: "3+", label: "Years Experience" },
-                { value: "30M+", label: "Txns Processed" },
-                { value: "100%", label: "Client Satisfaction" },
+                { value: "3+", label: "Years" },
+                { value: "30M+", label: "Txns" },
+                { value: "100%", label: "Satisfaction" },
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + index * 0.1 }}
-                  className="text-center p-2 sm:p-3 rounded-lg bg-white/5 dark:bg-black/20 border border-border/50 backdrop-blur-sm">
-                  <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-royal to-gold bg-clip-text text-transparent">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-gray-300 mt-1">
-                    {stat.label}
-                  </p>
+                  transition={{ delay: 0.5 + index * 0.05 }}
+                  className="p-3 rounded-lg bg-white/5 border border-white/20 backdrop-blur-sm text-center"
+                >
+                  <p className="text-xl font-light text-white">{stat.value}</p>
+                  <p className="text-xs text-white/50 mt-1">{stat.label}</p>
                 </motion.div>
               ))}
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Clean, Minimal */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start px-2 sm:px-0">
+              transition={{ delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
               <motion.button
                 onClick={() => scrollToSection("#projects")}
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 20px 40px rgba(147, 51, 234, 0.3)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="group relative px-6 sm:px-8 py-3 sm:py-4 btn-primary rounded-xl font-semibold overflow-hidden text-sm sm:text-base">
-                <span className="relative z-10">View My Work</span>
-                <motion.div
-                  className="absolute inset-0"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.1)" }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 bg-white/10 border border-white/20 rounded-lg font-light text-white text-sm hover:bg-white/20 transition-all duration-300 backdrop-blur-sm"
+              >
+                View My Work
               </motion.button>
               <motion.button
                 onClick={() => scrollToSection("#experience")}
-                whileHover={{
-                  scale: 1.05,
-                  backgroundColor: "rgba(156, 163, 175, 0.2)",
-                }}
-                whileTap={{ scale: 0.95 }}
-                className="px-6 sm:px-8 py-3 sm:py-4 btn-secondary rounded-xl font-semibold transition-all duration-300 text-sm sm:text-base">
+                whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.05)" }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-3 bg-transparent border border-white/10 rounded-lg font-light text-white/70 text-sm hover:border-white/20 hover:text-white transition-all duration-300"
+              >
                 View Experience
               </motion.button>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Social Links - Subtle Icons */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex gap-3 sm:gap-4 justify-center lg:justify-start">
+              transition={{ delay: 0.6 }}
+              className="flex gap-4 justify-center lg:justify-start"
+            >
               {[
                 {
                   icon: Mail,
@@ -257,159 +243,157 @@ const Hero = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{
-                    scale: 1.1,
-                    y: -5,
-                    boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
-                  }}
+                  whileHover={{ scale: 1.1, y: -2, color: "#60a5fa" }} // Blue accent for hover
                   whileTap={{ scale: 0.95 }}
-                  className="p-2 sm:p-3 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-xl border border-border/50 text-gray-300 hover:text-gold transition-all duration-300">
-                  <social.icon size={18} className="sm:w-5 sm:h-5" />
+                  className="p-3 text-white/60 hover:text-white transition-all duration-300"
+                >
+                  <social.icon size={20} />
                 </motion.a>
               ))}
             </motion.div>
           </motion.div>
 
-          {/* Right Side - Animated UI */}
+          {/* Right Side - Simplified Animated UI */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative h-96 sm:h-96 md:h-[500px] lg:h-[600px] flex items-center justify-center hidden sm:flex">
-            {/* Outer Rotating Circle */}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="relative h-80 sm:h-96 md:h-[450px] lg:h-[500px] flex items-center justify-center hidden sm:flex" // Slightly smaller
+          >
+            {/* Simplified Rotating Rings - Slower, Subtler */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-              className="absolute w-64 sm:w-72 md:w-80 lg:w-96 h-64 sm:h-72 md:h-80 lg:h-96 border-2 border-royal/20 rounded-full"></motion.div>
-
-            {/* Middle Rotating Circle */}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }} // Slower for calm
+              className="absolute w-48 sm:w-56 md:w-64 lg:w-72 h-48 sm:h-56 md:h-64 lg:h-72 border border-white/10 rounded-full" // Thinner, lighter border
+            />
             <motion.div
               animate={{ rotate: -360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute w-56 sm:w-64 md:w-72 lg:w-80 h-56 sm:h-64 md:h-72 lg:h-80 border-2 border-gold/20 rounded-full"></motion.div>
-
-            {/* Inner Rotating Circle (opposite direction) */}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              className="absolute w-40 sm:w-48 md:w-56 lg:w-64 h-40 sm:h-48 md:h-56 lg:h-64 border border-purple-500/10 rounded-full"
+            />
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-              className="absolute w-48 sm:w-56 md:w-64 lg:w-64 h-48 sm:h-56 md:h-64 lg:h-64 border-2 border-burgundy/25 rounded-full"></motion.div>
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="absolute w-32 sm:w-40 md:w-48 lg:w-48 h-32 sm:h-40 md:h-48 lg:h-48 border border-blue-500/10 rounded-full"
+            />
 
-            {/* Floating Tech Cards - Spread Out Circularly */}
+            {/* Floating Tech Cards - Gentle Arc */}
             {techCards.map((card, index) => {
               const position = getCardPosition(index);
               return (
                 <motion.div
                   key={card.label}
-                  initial={{ opacity: 0, scale: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.15 }}
-                  whileHover={{ scale: 1.15, rotate: 5 }}
+                  transition={{ delay: 0.7 + index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
                   className="absolute -translate-x-1/2 -translate-y-1/2"
-                  style={position}>
+                  style={position}
+                >
                   <motion.div
                     animate={{
-                      y: [0, -12, 0],
-                      rotate: [0, 5, 0],
+                      y: [0, -8, 0], // Subtler float
+                      rotate: [0, 2, 0],
                     }}
                     transition={{
-                      duration: 3.5,
+                      duration: 4,
                       repeat: Infinity,
-                      delay: index * 0.4,
+                      delay: index * 0.3,
                       ease: "easeInOut",
                     }}
-                    className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-r from-royal/20 to-gold/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                    <div className="relative bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-xl p-3 sm:p-4 border border-border/50 shadow-lg hover:shadow-2xl transition-shadow duration-300">
-                      <div
-                        className={`w-10 sm:w-12 h-10 sm:h-12 rounded-lg bg-gradient-to-r ${card.color} flex items-center justify-center mb-2 sm:mb-3`}>
-                        <card.icon className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
-                      </div>
-                      <p className="text-xs sm:text-sm font-medium text-gray-300 whitespace-nowrap">
-                        {card.label}
-                      </p>
+                    className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 shadow-lg" // Cleaner card
+                  >
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${card.color} flex items-center justify-center mb-2`}>
+                      <card.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/80" />
                     </div>
+                    <p className="text-xs font-light text-white/70 whitespace-nowrap">{card.label}</p>
                   </motion.div>
                 </motion.div>
               );
             })}
 
-            {/* Floating Icons */}
+            {/* Floating Icons - Minimal */}
             {floatingIcons.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.5 + index * 0.3 }}
+                transition={{ delay: 1 + index * 0.2 }}
                 className="absolute"
                 style={{
-                  top: `${12 + index * 28}%`,
-                  right: `${5 + index * 18}%`,
-                }}>
+                  top: `${10 + index * 25}%`,
+                  right: `${10 + index * 15}%`,
+                }}
+              >
                 <motion.div
                   animate={{
-                    y: [0, -18, 0],
-                    rotate: [0, 180, 360],
+                    y: [0, -12, 0],
+                    rotate: [0, 90, 180],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 5,
                     repeat: Infinity,
-                    delay: index * 0.5,
+                    delay: index * 0.4,
                     ease: "easeInOut",
                   }}
-                  className={`w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-gradient-to-r ${item.color} flex items-center justify-center shadow-lg hover:shadow-2xl transition-shadow duration-300`}>
-                  <item.icon className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full ${item.color} flex items-center justify-center shadow-md`}
+                >
+                  <item.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/60" />
                 </motion.div>
               </motion.div>
             ))}
 
-            {/* Central Profile Circle */}
+            {/* Central Profile - Clean Monogram */}
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2 }}
-              whileHover={{ scale: 1.08 }}
-              className="relative z-10">
-              <div className="w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 rounded-full bg-gradient-to-r from-royal via-champagne to-gold p-1 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                <div className="w-full h-full rounded-full bg-white/5 dark:bg-black/20 flex items-center justify-center">
-                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-royal via-champagne to-gold bg-clip-text text-transparent">
+              transition={{ delay: 0.9 }}
+              whileHover={{ scale: 1.05 }}
+              className="relative z-10"
+            >
+              <div className="w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 rounded-full bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-indigo-400/20 p-1 shadow-xl border border-white/10">
+                <div className="w-full h-full rounded-full bg-white/5 flex items-center justify-center backdrop-blur-sm">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-light bg-gradient-to-r from-blue-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent"> {/* Updated with matching gradient for contrast */}
                     RS
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Glitter Particles */}
+            {/* Subtle Glitter Particles (Now like Distant Stars) */}
             {glitterParticles.map((particle) => (
               <motion.div
                 key={particle.id}
                 initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: [0, 1, 0], scale: [0, 1, 0] }}
+                animate={{ opacity: [0, 0.8, 0], scale: [0, 1, 0] }}
                 transition={{
-                  duration: 2,
+                  duration: 3,
                   delay: particle.delay,
                   repeat: Infinity,
-                  repeatDelay: 3,
+                  repeatDelay: 4,
                 }}
-                className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+                className="absolute w-1 h-1 bg-white rounded-full"
                 style={particle.position}
               />
             ))}
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Minimal */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2">
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
           <motion.button
             onClick={() => scrollToSection("#about")}
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            whileHover={{ scale: 1.1 }}
-            className="p-2 sm:p-3 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-full border border-gray-200/50 dark:border-gray-700/50 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300">
-            <ArrowDown size={20} className="sm:w-6 sm:h-6" />
+            animate={{ y: [0, 8, 0] }} // Subtler bounce
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            whileHover={{ scale: 1.05 }}
+            className="p-3 bg-white/5 border border-white/20 rounded-full backdrop-blur-sm text-white/50 hover:text-white transition-all duration-300"
+          >
+            <ArrowDown size={18} />
           </motion.button>
         </motion.div>
       </div>

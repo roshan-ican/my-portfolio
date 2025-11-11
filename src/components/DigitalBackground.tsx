@@ -1,9 +1,8 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-interface DigitalBackgroundProps {
+interface SpaceBackgroundProps {
   children: React.ReactNode;
   className?: string;
   id?: string;
@@ -13,18 +12,19 @@ const DigitalBackground = ({
   children,
   className = "",
   id,
-}: DigitalBackgroundProps) => {
-  const [networkNodes, setNetworkNodes] = useState<
+}: SpaceBackgroundProps) => {
+  const [stars, setStars] = useState<
     Array<{
       id: number;
       x: number;
       y: number;
       delay: number;
-      color: { light: string; dark: string };
+      size: number;
+      opacity: number;
     }>
   >([]);
 
-  const [networkConnections, setNetworkConnections] = useState<
+  const [shootingStars, setShootingStars] = useState<
     Array<{
       id: number;
       startX: number;
@@ -32,216 +32,177 @@ const DigitalBackground = ({
       endX: number;
       endY: number;
       delay: number;
-      color: { light: string; dark: string };
+      length: number;
     }>
   >([]);
 
-  // Luxury palette nodes (Royal, Gold, Champagne, Burgundy)
-  const nodeColors = [
-    { light: "bg-royal", dark: "dark:bg-royal" },
-    { light: "bg-gold", dark: "dark:bg-gold" },
-    { light: "bg-champagne", dark: "dark:bg-champagne" },
-    { light: "bg-burgundy", dark: "dark:bg-burgundy" },
-    { light: "bg-royal", dark: "dark:bg-royal" },
-    { light: "bg-gold", dark: "dark:bg-gold" },
-  ];
-
-  const connectionGradients = [
-    { light: "from-royal/60 to-gold/60", dark: "dark:from-royal/60 dark:to-gold/60" },
-    { light: "from-gold/50 to-champagne/60", dark: "dark:from-gold/50 dark:to-champagne/60" },
-    { light: "from-burgundy/50 to-royal/60", dark: "dark:from-burgundy/50 dark:to-royal/60" },
-    { light: "from-royal/60 to-champagne/60", dark: "dark:from-royal/60 dark:to-champagne/60" },
-    { light: "from-gold/50 to-royal/60", dark: "dark:from-gold/50 dark:to-royal/60" },
-    { light: "from-champagne/60 to-royal/60", dark: "dark:from-champagne/60 dark:to-royal/60" },
-  ];
-
   useEffect(() => {
-    // Create network nodes for the digital background with color variation
-    const nodes = Array.from({ length: 40 }, (_, i) => ({
+    // Create twinkling stars
+    const starCount = 150; // More stars for a dense space look
+    const newStars = Array.from({ length: starCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      delay: Math.random() * 3,
-      color: nodeColors[i % nodeColors.length],
+      delay: Math.random() * 5,
+      size: Math.random() * 2 + 0.5, // Vary size for depth
+      opacity: Math.random() * 0.5 + 0.3, // Base opacity
     }));
+    setStars(newStars);
 
-    // Create network connections with color variation
-    const connections = Array.from({ length: 20 }, (_, i) => ({
+    // Create shooting stars (occasional streaks)
+    const shootingCount = 5; // Fewer, as they are dynamic
+    const newShootingStars = Array.from({ length: shootingCount }, (_, i) => ({
       id: i,
       startX: Math.random() * 100,
       startY: Math.random() * 100,
-      endX: Math.random() * 100,
-      endY: Math.random() * 100,
-      delay: Math.random() * 2,
-      color: connectionGradients[i % connectionGradients.length],
+      endX: Math.random() * 100 - 20, // Move leftward/upward
+      endY: Math.random() * 100 - 20,
+      delay: Math.random() * 10 + i * 3, // Staggered
+      length: Math.random() * 50 + 20, // Length of trail
     }));
-
-    setNetworkNodes(nodes);
-    setNetworkConnections(connections);
+    setShootingStars(newShootingStars);
   }, []);
 
   return (
     <div id={id} className={`relative overflow-hidden ${className}`}>
-      {/* Luxury patterned background */}
-      <div className="absolute inset-0 z-10 bg-luxury-pattern">
-        
-        {/* Vignette */}
-        <div className="absolute inset-0 pointer-events-none" style={{
-          background: "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.55) 100%)"
-        }}></div>
-
-        {/* Elegant glow elements */}
+      {/* Space background - dark with subtle gradient */}
+      <div className="absolute inset-0 z-10 bg-black">
+        {/* Subtle space gradient */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse at center, #0a0a0a 0%, #000000 70%)",
+          }}
+        />
+        {/* Nebula-like glows for atmosphere */}
         <motion.div
-          animate={{ opacity: [0.2, 0.5, 0.2] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-royal/30 via-royal/10 to-transparent rounded-full blur-3xl pointer-events-none"
-        ></motion.div>
-
+          animate={{ opacity: [0.05, 0.15, 0.05] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-gradient-to-br from-purple-900/20 via-blue-900/10 to-transparent rounded-full blur-3xl pointer-events-none"
+        />
         <motion.div
-          animate={{ opacity: [0.15, 0.4, 0.15] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-tl from-gold/20 via-champagne/10 to-transparent rounded-full blur-3xl pointer-events-none"
-        ></motion.div>
+          animate={{ opacity: [0.03, 0.1, 0.03] }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut", delay: 5 }}
+          className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-gradient-to-tl from-pink-900/15 via-purple-900/5 to-transparent rounded-full blur-3xl pointer-events-none"
+        />
+        {/* Vignette for depth */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%)",
+          }}
+        />
 
-        {/* Burgundy accent */}
-        <motion.div
-          animate={{ opacity: [0.1, 0.3, 0.1] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-gradient-to-br from-burgundy/20 to-transparent rounded-full blur-3xl pointer-events-none"
-        ></motion.div>
-
-        {/* Network Nodes */}
-        {networkNodes.length > 0 &&
-          networkNodes.map((node) => (
-            <motion.div
-              key={node.id}
-              className={`absolute w-2 h-2 ${node.color.light} ${node.color.dark} rounded-full shadow-2xl`}
-              style={{
-                left: `${node.x}%`,
-                top: `${node.y}%`,
-                boxShadow:
-                  node.id % 2 === 0
-                    ? `0 0 15px currentColor, 0 0 30px currentColor`
-                    : `0 0 20px currentColor, 0 0 40px currentColor`,
-              }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: [0, 1, 0.8, 1, 0.3],
-                scale: [0, 1, 1.3, 1, 0.5],
-              }}
-              transition={{
-                duration: 5,
-                delay: node.delay,
-                repeat: Infinity,
-                repeatDelay: 2,
-              }}
-            />
-          ))}
-
-        {/* Network Connections */}
-        {networkConnections.length > 0 &&
-          networkConnections.map((connection) => (
-            <motion.div
-              key={connection.id}
-              className={`absolute h-px bg-gradient-to-r ${connection.color?.light} ${connection.color.dark}`}
-              style={{
-                left: `${Math.min(connection.startX, connection.endX)}%`,
-                top: `${Math.min(connection.startY, connection.endY)}%`,
-                width: `${Math.abs(connection.endX - connection.startX)}%`,
-                transform: `rotate(${
-                  (Math.atan2(
-                    connection.endY - connection.startY,
-                    connection.endX - connection.startX
-                  ) *
-                    180) /
-                  Math.PI
-                }deg)`,
-                transformOrigin: "0 0",
-                boxShadow: "0 0 10px currentColor",
-              }}
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{
-                opacity: [0, 0.8, 0.4, 0.8, 0],
-                scaleX: [0, 1, 1, 1, 0],
-              }}
-              transition={{
-                duration: 4,
-                delay: connection.delay,
-                repeat: Infinity,
-                repeatDelay: 3,
-              }}
-            />
-          ))}
-
-        {/* Floating particles */}
-        {Array.from({ length: 12 }).map((_, i) => (
+        {/* Twinkling Stars */}
+        {stars.map((star) => (
           <motion.div
-            key={`particle-${i}`}
-            className={`absolute w-1.5 h-1.5 rounded-full ${
-              i % 3 === 0
-                ? "bg-royal/50 shadow-lg shadow-royal/50"
-                : i % 3 === 1
-                ? "bg-gold/40 shadow-md shadow-gold/40"
-                : "bg-champagne/50 shadow-lg shadow-champagne/50"
-            }`}
+            key={star.id}
+            className="absolute rounded-full bg-white shadow-lg"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              boxShadow: `0 0 ${star.size * 3}px rgba(255,255,255,0.8)`,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, star.opacity, 1, star.opacity, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 4,
+              delay: star.delay,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          />
+        ))}
+
+        {/* Shooting Stars */}
+        {shootingStars.map((shootingStar) => (
+          <motion.div
+            key={shootingStar.id}
+            className="absolute bg-white"
+            style={{
+              left: `${shootingStar.startX}%`,
+              top: `${shootingStar.startY}%`,
+              width: `${shootingStar.length}px`,
+              height: "1px",
+              transform: `rotate(${Math.atan2(
+                shootingStar.endY - shootingStar.startY,
+                shootingStar.endX - shootingStar.startX
+              ) * 180 / Math.PI}deg)`,
+              transformOrigin: "0 0",
+              boxShadow: "0 0 10px rgba(255,255,255,0.8)",
+            }}
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{
+              scaleX: 1,
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2,
+              delay: shootingStar.delay,
+              repeat: Infinity,
+              repeatDelay: 8 + Math.random() * 5,
+              ease: "linear",
+            }}
+          />
+        ))}
+
+        {/* Floating space dust/particles */}
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={`dust-${i}`}
+            className="absolute w-0.5 h-0.5 rounded-full bg-white/40"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
             animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
-              opacity: [0.1, 0.8, 0.1],
+              y: [0, -10, 0],
+              x: [0, Math.random() * 5 - 2.5, 0],
+              opacity: [0.2, 0.6, 0.2],
+              rotate: [0, 180],
             }}
             transition={{
-              duration: 6 + i * 0.5,
+              duration: 10 + i * 0.5,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: i * 0.3,
+              delay: i * 0.2,
             }}
           />
         ))}
 
-        {/* Pulsing orbs */}
-        {Array.from({ length: 6 }).map((_, i) => (
-          <motion.div
-            key={`orb-${i}`}
-            className={`absolute rounded-full ${
-              i % 2 === 0
-                ? "bg-royal/30 shadow-2xl shadow-royal/60"
-                : "bg-gold/20 shadow-xl shadow-gold/40"
-            }`}
-            style={{
-              left: `${15 + i * 18}%`,
-              top: `${25 + (i % 3) * 30}%`,
-              width: `${3 + i}px`,
-              height: `${3 + i}px`,
-            }}
-            animate={{
-              scale: [1, 2.5, 1],
-              opacity: [0.2, 0.7, 0.1],
-            }}
-            transition={{
-              duration: 4 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.6,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Scanning lines */}
+        {/* Distant planets/orbs */}
         {Array.from({ length: 3 }).map((_, i) => (
           <motion.div
-            key={`scan-${i}`}
-            className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-royal/30 to-transparent"
-            initial={{ top: "0%" }}
-            animate={{ top: "100%" }}
+            key={`planet-${i}`}
+            className={`absolute rounded-full shadow-2xl ${
+              i % 3 === 0
+                ? "bg-blue-400/20 shadow-blue-500/30"
+                : i % 3 === 1
+                ? "bg-purple-500/15 shadow-purple-600/20"
+                : "bg-gray-300/10 shadow-white/20"
+            }`}
+            style={{
+              left: `${10 + i * 30}%`,
+              top: `${20 + (i % 2) * 40}%`,
+              width: `${20 + i * 10}px`,
+              height: `${20 + i * 10}px`,
+            }}
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: [0, 360],
+            }}
             transition={{
-              duration: 8,
+              duration: 30 + i * 10,
               repeat: Infinity,
               ease: "linear",
-              delay: i * 2.5,
+              delay: i * 5,
             }}
           />
         ))}

@@ -1,7 +1,6 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, Globe } from "lucide-react"; // Updated import for Globe
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navigation = () => {
@@ -13,7 +12,6 @@ const Navigation = () => {
       const isScrolled = window.scrollY > 50;
       setScrolled(isScrolled);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -39,7 +37,6 @@ const Navigation = () => {
         const elementPosition =
           element.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - navHeight;
-
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
@@ -81,25 +78,26 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "navbar-premium"
-          : "bg-transparent"
-      }`}>
+        scrolled ? "navbar-premium" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo */}
+          {/* Logo - Simplified to white, no bg, blended */}
           <motion.div
-            className="flex items-center gap-2 text-2xl font-bold"
+            className="flex items-center gap-2 text-2xl font-bold text-white" // Simple white text
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400 }}>
+            transition={{ type: "spring", stiffness: 400 }}
+          >
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="w-8 h-8 bg-gradient-to-r from-royal to-gold rounded-lg flex items-center justify-center">
-              <Sparkles size={16} className="text-white" />
+              className="flex items-center justify-center" // No bg, transparent for blend
+            >
+              <Globe size={16} className="text-white" /> {/* White icon, no container bg */}
             </motion.div>
-            <span className="brand-contrast font-extrabold">
-              Roshan
+            <span className="font-extrabold"> {/* Removed gradient, simple white */}
+              Roshan Sahani
             </span>
           </motion.div>
 
@@ -117,10 +115,11 @@ const Navigation = () => {
                   y: -2,
                   transition: { type: "spring", stiffness: 400 },
                 }}
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-all duration-300 font-medium rounded-lg group">
+                className="relative px-4 py-2 text-white/70 hover:text-white transition-all duration-300 font-medium rounded-lg group"
+              >
                 {item.name}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-royal/10 to-gold/10 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-royal/20 to-gold/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   whileHover={{ scale: 1.05 }}
                 />
                 <motion.div
@@ -137,7 +136,8 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 bg-white/5 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-border/50 text-gray-300 hover:text-white transition-colors duration-200">
+              className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-royal/30 text-white/70 hover:text-white transition-colors duration-200"
+            >
               <AnimatePresence mode="wait">
                 {isOpen ? (
                   <motion.div
@@ -145,7 +145,8 @@ const Navigation = () => {
                     initial={{ rotate: -90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: 90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}>
+                    transition={{ duration: 0.2 }}
+                  >
                     <X size={24} />
                   </motion.div>
                 ) : (
@@ -154,7 +155,8 @@ const Navigation = () => {
                     initial={{ rotate: 90, opacity: 0 }}
                     animate={{ rotate: 0, opacity: 1 }}
                     exit={{ rotate: -90, opacity: 0 }}
-                    transition={{ duration: 0.2 }}>
+                    transition={{ duration: 0.2 }}
+                  >
                     <Menu size={24} />
                   </motion.div>
                 )}
@@ -171,14 +173,16 @@ const Navigation = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-border/50 overflow-hidden">
+              className="md:hidden bg-black/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-royal/20 overflow-hidden"
+            >
               {navItems.map((item) => (
                 <motion.button
                   key={item.name}
                   variants={itemVariants}
                   onClick={() => scrollToSection(item.href)}
                   whileHover={{ x: 10, transition: { type: "spring", stiffness: 400 } }}
-                  className="block w-full text-left px-6 py-3 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-200 relative group">
+                  className="block w-full text-left px-6 py-3 text-white/70 hover:text-white transition-all duration-200 relative group"
+                >
                   {item.name}
                   <motion.div
                     className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-gold to-royal opacity-0 group-hover:opacity-100 transition-opacity duration-200"
