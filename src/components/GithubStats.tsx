@@ -10,7 +10,7 @@ const GitHubStats = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e:any) => {
+    const handleMouseMove = (e:MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
@@ -61,17 +61,16 @@ const GitHubStats = () => {
 
   const springTransition = { type: "spring", stiffness: 100, damping: 15 };
 
-  const cardVariants = {
+ const cardVariants = {
     hidden: { y: 60, opacity: 0, scale: 0.9 },
     visible: {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: springTransition,
+      transition: { type: "spring" as const, stiffness: 100, damping: 15 },
     },
   };
-
-  return (
+return (
     <DigitalBackground id="github" className="py-16 sm:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -123,9 +122,12 @@ const GitHubStats = () => {
           {stats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <motion.div
+            <motion.div
                 key={index}
-                variants={cardVariants as any}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={cardVariants}
                 whileHover={{
                   y: -10,
                   scale: 1.02,
