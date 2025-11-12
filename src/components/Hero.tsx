@@ -12,6 +12,7 @@ import {
   Database,
   Cpu,
   Sparkles,
+  Cloud, // Added Cloud icon for AWS
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import DigitalBackground from "./DigitalBackground"; // Switched to alias the original for luxury/space hybrid feel
@@ -81,6 +82,13 @@ const Hero = () => {
       label: "Cloud Native",
       color: "bg-cyan-500/10",
     },
+    // --- Added AWS Card ---
+    {
+      icon: Cloud,
+      label: "AWS",
+      color: "bg-orange-500/10", // Using AWS orange
+    },
+    // -----------------------
   ];
 
   // Seeded random for consistent glitter (now subtle stars)
@@ -99,10 +107,12 @@ const Hero = () => {
   }));
 
   // Calculate positions for tech cards in a gentle arc (less chaotic)
+  // This function automatically handles the new card count
   const getCardPosition = (index: number) => {
     const totalCards = techCards.length;
     const angle = (index / totalCards) * 180 - 45; // Gentle arc
-    const radius = 25; // Closer for minimalism
+    // --- CHANGE 1: Increased radius to spread cards out ---
+    const radius = 35; // Was 25
     const x = 50 + radius * Math.cos((angle * Math.PI) / 180);
     const y = 50 + radius * Math.sin((angle * Math.PI) / 180);
     return { left: `${x}%`, top: `${y}%` };
@@ -229,7 +239,7 @@ const Hero = () => {
                 },
                 {
                   icon: Linkedin,
-                  href: "https://www.linkedin.com/in/roshan-sahani",
+                  href: "https.www.linkedin.com/in/roshan-sahani",
                   label: "LinkedIn",
                 },
                 {
@@ -287,7 +297,7 @@ const Hero = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.7 + index * 0.1 }}
                   whileHover={{ scale: 1.05 }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2"
+                  className="absolute -translate-x-1/2 -translate-y-1/2 "
                   style={position}
                 >
                   <motion.div
@@ -301,12 +311,14 @@ const Hero = () => {
                       delay: index * 0.3,
                       ease: "easeInOut",
                     }}
-                    className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 shadow-lg" // Cleaner card
+                    // --- CHANGE 2: Increased padding ---
+                    className="bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/10 shadow-lg" // Was p-1.5, removed gap-x-2
                   >
-                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${card.color} flex items-center justify-center mb-2`}>
+                    <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg ${card.color} flex items-center justify-center mb-2`}> {/* Removed space-x-2 */}
                       <card.icon className="w-4 h-4 sm:w-5 sm:h-5 text-white/80" />
                     </div>
-                    <p className="text-xs font-light text-white/70 whitespace-nowrap">{card.label}</p>
+                    {/* --- CHANGE 3: Increased text size --- */}
+                    <p className="text-sm font-light text-white/70 whitespace-nowrap">{card.label}</p> {/* Was text-xs */}
                   </motion.div>
                 </motion.div>
               );
@@ -354,7 +366,7 @@ const Hero = () => {
               <div className="w-20 sm:w-24 md:w-28 h-20 sm:h-24 md:h-28 rounded-full bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-indigo-400/20 p-1 shadow-xl border border-white/10">
                 <div className="w-full h-full rounded-full bg-white/5 flex items-center justify-center backdrop-blur-sm">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-light bg-gradient-to-r from-blue-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent"> {/* Updated with matching gradient for contrast */}
-                    RS
+                  DEV
                   </div>
                 </div>
               </div>
