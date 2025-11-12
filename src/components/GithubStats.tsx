@@ -7,27 +7,31 @@ const GitHubStats = () => {
   const stats = [
     {
       label: "Total Repositories",
-      value: "25+",
+      value: "30+", // Updated from 25+
       icon: BookOpen,
       color: "from-blue-500 to-cyan-500",
+      shadow: "hover:shadow-cyan-500/30",
     },
     {
       label: "Total Commits",
       value: "500+",
       icon: GitCommit,
       color: "from-purple-500 to-pink-500",
+      shadow: "hover:shadow-pink-500/30",
     },
     {
       label: "Followers",
-      value: "100+",
+      value: "130+", // Updated from 100+
       icon: Users,
       color: "from-green-500 to-teal-500",
+      shadow: "hover:shadow-teal-500/30",
     },
     {
       label: "Starred",
       value: "50+",
       icon: Github,
       color: "from-orange-500 to-red-500",
+      shadow: "hover:shadow-red-500/30",
     },
   ];
 
@@ -91,7 +95,7 @@ const GitHubStats = () => {
           </motion.p>
         </motion.div>
 
-        {/* Stats Grid */}
+        {/* --- STATS GRID IMPROVEMENT --- */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -113,42 +117,36 @@ const GitHubStats = () => {
                     damping: 20,
                   },
                 }}
-                className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600/50 transition-all duration-300 group relative h-[200px] sm:h-[220px] flex flex-col">
-                <div className={`inline-block p-3 rounded-lg bg-gradient-to-br ${stat.color} mb-4 w-fit`}>
+                // Added 'group' for children hover effects and dynamic shadow
+                className={`group bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700/50 transition-all duration-300 h-[200px] sm:h-[220px] flex flex-col hover:shadow-xl ${stat.shadow} dark:hover:shadow-none`}
+              >
+                {/* Icon now animates on group-hover */}
+                <motion.div
+                  className={`inline-block p-3 rounded-lg bg-gradient-to-br ${stat.color} mb-4 w-fit transition-transform duration-300 ease-in-out group-hover:scale-110 group-hover:-rotate-12`}
+                >
                   <Icon className="w-5 sm:w-6 h-5 sm:h-6 text-white" />
-                </div>
+                </motion.div>
+                
                 <h3 className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm font-medium mb-2 flex-1">
                   {stat.label}
                 </h3>
+                
+                {/* Value now animates on group-hover */}
                 <motion.p
-                  className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent`}
+                  className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent transition-transform duration-300 ease-in-out group-hover:scale-105`}
                   whileInView={{ scale: [0.9, 1] }}
                   transition={{ duration: 0.5 }}>
                   {stat.value}
                 </motion.p>
+                
+                {/* --- Removed the absolute inset-0 popup --- */}
 
-                {/* Hover Popup */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                  whileHover={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-lg sm:rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700/50 shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 flex flex-col justify-center items-center text-center">
-                  <div className={`inline-block p-3 rounded-lg bg-gradient-to-br ${stat.color} mb-3`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <p className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2`}>
-                    {stat.value}
-                  </p>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-                    {stat.label}
-                  </p>
-                </motion.div>
               </motion.div>
             );
           })}
         </motion.div>
 
-        {/* Contribution Graph - Main Card with Hover */}
+        {/* --- CONTRIBUTION GRAPH IMPROVEMENT --- */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -164,11 +162,12 @@ const GitHubStats = () => {
               damping: 20,
             },
           }}
-          className="bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600/50 transition-all duration-300 group relative min-h-[400px] sm:min-h-[500px] flex flex-col overflow-hidden">
+          className="group bg-white dark:bg-gray-800/50 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200 dark:border-gray-700/50 hover:border-gray-300 dark:hover:border-gray-600/50 transition-all duration-300 relative min-h-[400px] sm:min-h-[500px] flex flex-col overflow-hidden"
+        >
           
           {/* Main Graph View */}
           <div className="relative z-10 flex-1 flex flex-col">
-            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-royal group-hover:via-champagne group-hover:to-gold group-hover:bg-clip-text transition-all duration-300">
+            <h3 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white mb-4">
               Contribution Activity
             </h3>
             <div className="overflow-x-auto -mx-4 sm:mx-0">
@@ -181,12 +180,14 @@ const GitHubStats = () => {
             </div>
           </div>
 
-          {/* Hover Popup */}
+          {/* --- New Hover Overlay --- */}
+          {/* This overlay slides up from the bottom instead of covering the whole card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl rounded-lg sm:rounded-xl p-4 sm:p-6 md:p-8 border border-gray-200 dark:border-gray-700/50 shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 overflow-y-auto flex flex-col justify-center items-center text-center">
+            className="absolute bottom-0 left-0 right-0 z-20 p-6 md:p-8 text-center flex flex-col items-center
+                       bg-gradient-to-t from-white via-white dark:from-gray-800 dark:via-gray-800
+                       transform translate-y-1/2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100
+                       transition-all duration-300 ease-in-out"
+          >
             <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-royal via-champagne to-gold bg-clip-text text-transparent mb-3">
               Contribution Activity
             </h3>
@@ -206,7 +207,7 @@ const GitHubStats = () => {
           </motion.div>
         </motion.div>
 
-        {/* CTA Button */}
+        {/* CTA Button (Kept as is, it's good) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
