@@ -1,20 +1,20 @@
-"use client";
-import { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react"; // Updated import for Globe
-import { motion, AnimatePresence } from "framer-motion";
+"use client"
+import { useState, useEffect } from "react"
+import { Menu, X, Globe } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      setScrolled(isScrolled);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      const isScrolled = window.scrollY > 50
+      setScrolled(isScrolled)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -23,28 +23,25 @@ const Navigation = () => {
     { name: "Experience", href: "#experience" },
     { name: "Projects", href: "#projects" },
     { name: "Contact", href: "#contact" },
-  ];
+  ]
 
   const scrollToSection = (href: string) => {
     if (href.startsWith("/")) {
-      // External link - navigate to page
-      window.location.href = href;
+      window.location.href = href
     } else {
-      // Internal section - scroll to element
-      const element = document.querySelector(href);
+      const element = document.querySelector(href)
       if (element) {
-        const navHeight = 80; // Approximate height of the fixed navigation
-        const elementPosition =
-          element.getBoundingClientRect().top + window.pageYOffset;
-        const offsetPosition = elementPosition - navHeight;
+        const navHeight = 80
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - navHeight
         window.scrollTo({
           top: offsetPosition,
           behavior: "smooth",
-        });
+        })
       }
     }
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   const menuVariants = {
     closed: {
@@ -65,12 +62,12 @@ const Navigation = () => {
         delayChildren: 0.1,
       },
     },
-  };
+  }
 
   const itemVariants = {
     closed: { opacity: 0, x: -20 },
     open: { opacity: 1, x: 0 },
-  };
+  }
 
   return (
     <motion.nav
@@ -78,30 +75,26 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "navbar-premium" : "bg-transparent"
+        scrolled ? "bg-slate-900/80 backdrop-blur-sm" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          {/* Logo - Simplified to white, no bg, blended */}
           <motion.div
-            className="flex items-center gap-2 text-2xl font-bold text-white" // Simple white text
+            className="flex items-center gap-2 text-2xl font-bold text-white"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 400 }}
           >
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="flex items-center justify-center" // No bg, transparent for blend
+              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              className="flex items-center justify-center"
             >
-              <Globe size={16} className="text-white" /> {/* White icon, no container bg */}
+              <Globe size={16} className="text-white" />
             </motion.div>
-            <span className="font-extrabold"> {/* Removed gradient, simple white */}
-              Roshan Sahani
-            </span>
+            <span className="font-extrabold">Roshan Sahani</span>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-1">
             {navItems.map((item, index) => (
               <motion.button
@@ -119,24 +112,23 @@ const Navigation = () => {
               >
                 {item.name}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-royal/20 to-gold/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   whileHover={{ scale: 1.05 }}
                 />
                 <motion.div
-                  className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-gold to-royal group-hover:w-full transition-all duration-300 transform -translate-x-1/2"
+                  className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 group-hover:w-full transition-all duration-300 transform -translate-x-1/2"
                   whileHover={{ width: "100%" }}
                 />
               </motion.button>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-royal/30 text-white/70 hover:text-white transition-colors duration-200"
+              className="p-2 bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-white/30 text-white/70 hover:text-white transition-colors duration-200"
             >
               <AnimatePresence mode="wait">
                 {isOpen ? (
@@ -165,7 +157,6 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -173,7 +164,7 @@ const Navigation = () => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="md:hidden bg-black/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-royal/20 overflow-hidden"
+              className="md:hidden bg-slate-900/95 backdrop-blur-xl rounded-2xl shadow-2xl mt-2 py-4 border border-white/20 overflow-hidden"
             >
               {navItems.map((item) => (
                 <motion.button
@@ -185,7 +176,7 @@ const Navigation = () => {
                 >
                   {item.name}
                   <motion.div
-                    className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-gold to-royal opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                     whileHover={{ opacity: 1 }}
                   />
                 </motion.button>
@@ -195,7 +186,7 @@ const Navigation = () => {
         </AnimatePresence>
       </div>
     </motion.nav>
-  );
-};
+  )
+}
 
-export default Navigation;
+export default Navigation

@@ -9,12 +9,12 @@ const CustomCursor = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // Smooth spring physics for the cat
-  const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
-  const catX = useSpring(mouseX, springConfig);
-  const catY = useSpring(mouseY, springConfig);
+  // --- CHANGE 1: Slower spring physics ---
+  // Increased damping/mass and decreased stiffness for a slower, "floatier" feel
+  const springConfig = { damping: 60, stiffness: 100, mass: 2 };
+  const mewX = useSpring(mouseX, springConfig); 
+  const mewY = useSpring(mouseY, springConfig); 
   
-  // Get velocity for dynamic animations
   const velocityX = useVelocity(mouseX);
   const velocityY = useVelocity(mouseY);
   
@@ -30,14 +30,12 @@ const CustomCursor = () => {
       mouseY.set(e.clientY);
       setIsVisible(true);
       
-      // Calculate rotation based on movement direction
       const deltaX = e.clientX - lastX;
       if (Math.abs(deltaX) > 1) {
         setRotation(deltaX > 0 ? -5 : 5);
       }
       lastX = e.clientX;
       
-      // Detect movement
       setIsMoving(true);
       clearTimeout(moveTimer);
       moveTimer = setTimeout(() => {
@@ -97,13 +95,13 @@ const CustomCursor = () => {
         </div>
       </motion.div>
 
-      {/* Cat follower */}
+      {/* Mew follower */}
       {isVisible && (
         <motion.div
           className="fixed top-0 left-0 pointer-events-none z-[9998]"
           style={{
-            x: catX,
-            y: catY,
+            x: mewX,
+            y: mewY,
           }}
         >
           <motion.div
@@ -117,10 +115,11 @@ const CustomCursor = () => {
             }}
             className="relative -translate-x-1/2 -translate-y-1/2"
           >
-            {/* Cat Character */}
+            {/* Mew Character */}
             <svg
-              width="64"
-              height="64"
+              // --- CHANGE 2: Smaller size ---
+              width="42"
+              height="40"
               viewBox="0 0 64 64"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -137,19 +136,19 @@ const CustomCursor = () => {
                 </filter>
               </defs>
               
-              {/* Cat Body */}
-              <ellipse cx="32" cy="40" rx="16" ry="14" fill="#FF6B35" filter="url(#glow)" />
+              {/* Mew Body */}
+              <ellipse cx="32" cy="40" rx="16" ry="14" fill="#C8A2C8" filter="url(#glow)" />
               
-              {/* Cat Head */}
-              <circle cx="32" cy="26" r="14" fill="#FF6B35" filter="url(#glow)" />
+              {/* Mew Head */}
+              <circle cx="32" cy="26" r="14" fill="#C8A2C8" filter="url(#glow)" />
               
               {/* Left Ear */}
-              <path d="M 20 18 L 16 6 L 26 14 Z" fill="#FF6B35" />
-              <path d="M 20 18 L 18 10 L 24 15 Z" fill="#FF8C61" />
+              <path d="M 20 18 L 16 6 L 26 14 Z" fill="#C8A2C8" />
+              <path d="M 20 18 L 18 10 L 24 15 Z" fill="#E0BBE4" />
               
               {/* Right Ear */}
-              <path d="M 44 18 L 48 6 L 38 14 Z" fill="#FF6B35" />
-              <path d="M 44 18 L 46 10 L 40 15 Z" fill="#FF8C61" />
+              <path d="M 44 18 L 48 6 L 38 14 Z" fill="#C8A2C8" />
+              <path d="M 44 18 L 46 10 L 40 15 Z" fill="#E0BBE4" />
               
               {/* Eyes */}
               <motion.g
@@ -162,14 +161,14 @@ const CustomCursor = () => {
                   repeatDelay: 2,
                 }}
               >
-                <ellipse cx="26" cy="24" rx="2.5" ry="4" fill="#1a1a1a" />
-                <ellipse cx="38" cy="24" rx="2.5" ry="4" fill="#1a1a1a" />
+                <ellipse cx="26" cy="24" rx="2.5" ry="4" fill="#66CCFF" />
+                <ellipse cx="38" cy="24" rx="2.5" ry="4" fill="#66CCFF" />
                 <ellipse cx="26.5" cy="23" rx="1" ry="1.5" fill="white" />
                 <ellipse cx="38.5" cy="23" rx="1" ry="1.5" fill="white" />
               </motion.g>
               
               {/* Nose */}
-              <path d="M 32 28 L 30 30 L 34 30 Z" fill="#E63946" />
+              <path d="M 32 28 L 30 30 L 34 30 Z" fill="#F8BBD0" />
               
               {/* Mouth */}
               <path d="M 32 30 Q 28 33 26 31" stroke="#1a1a1a" strokeWidth="1.2" fill="none" strokeLinecap="round" />
@@ -187,7 +186,7 @@ const CustomCursor = () => {
               {/* Animated Tail */}
               <motion.path
                 d="M 46 44 Q 56 46 60 42 Q 62 38 58 34"
-                stroke="#FF6B35"
+                stroke="#C8A2C8"
                 strokeWidth="6"
                 fill="none"
                 strokeLinecap="round"
@@ -205,7 +204,7 @@ const CustomCursor = () => {
                 }}
               />
               
-              {/* Animated Paws */}
+              {/* --- CHANGE 3: Show Feet More (Moved cy="52" to cy="56") --- */}
               <motion.g
                 animate={isMoving ? {
                   y: [0, -4, 0],
@@ -217,9 +216,9 @@ const CustomCursor = () => {
                   ease: "easeInOut",
                 }}
               >
-                <ellipse cx="26" cy="52" rx="4" ry="3" fill="#FF6B35" />
-                <circle cx="25" cy="52" r="1" fill="#FF8C61" />
-                <circle cx="27" cy="52" r="1" fill="#FF8C61" />
+                <ellipse cx="26" cy="56" rx="4" ry="3" fill="#C8A2C8" />
+                <circle cx="25" cy="56" r="1" fill="#E0BBE4" />
+                <circle cx="27" cy="56" r="1" fill="#E0BBE4" />
               </motion.g>
               
               <motion.g
@@ -234,9 +233,9 @@ const CustomCursor = () => {
                   delay: 0.2,
                 }}
               >
-                <ellipse cx="38" cy="52" rx="4" ry="3" fill="#FF6B35" />
-                <circle cx="37" cy="52" r="1" fill="#FF8C61" />
-                <circle cx="39" cy="52" r="1" fill="#FF8C61" />
+                <ellipse cx="38" cy="56" rx="4" ry="3" fill="#C8A2C8" />
+                <circle cx="37" cy="56" r="1" fill="#E0BBE4" />
+                <circle cx="39" cy="56" r="1" fill="#E0BBE4" />
               </motion.g>
             </svg>
 
@@ -260,11 +259,11 @@ const CustomCursor = () => {
                 className="absolute top-0 left-0"
               >
                 <svg width="20" height="20" viewBox="0 0 20 20">
-                  <circle cx="10" cy="13" r="3.5" fill="#FF6B35" opacity="0.6" />
-                  <circle cx="7" cy="8" r="2" fill="#FF6B35" opacity="0.6" />
-                  <circle cx="13" cy="8" r="2" fill="#FF6B35" opacity="0.6" />
-                  <circle cx="6" cy="11" r="2" fill="#FF6B35" opacity="0.6" />
-                  <circle cx="14" cy="11" r="2" fill="#FF6B35" opacity="0.6" />
+                  <circle cx="10" cy="13" r="3.5" fill="#C8A2C8" opacity="0.6" />
+                  <circle cx="7" cy="8" r="2" fill="#C8A2C8" opacity="0.6" />
+                  <circle cx="13" cy="8" r="2" fill="#C8A2C8" opacity="0.6" />
+                  <circle cx="6" cy="11" r="2" fill="#C8A2C8" opacity="0.6" />
+                  <circle cx="14" cy="11" r="2" fill="#C8A2C8" opacity="0.6" />
                 </svg>
               </motion.div>
             ))}
@@ -276,8 +275,8 @@ const CustomCursor = () => {
       <motion.div
         className="fixed top-0 left-0 pointer-events-none z-[9997] mix-blend-screen"
         style={{
-          x: catX,
-          y: catY,
+          x: mewX,
+          y: mewY,
         }}
       >
         <motion.div
@@ -286,7 +285,7 @@ const CustomCursor = () => {
             opacity: isHovering ? 0.3 : 0.1,
           }}
           transition={{ duration: 0.3 }}
-          className="w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 border-orange-400 rounded-full"
+          className="w-24 h-24 -translate-x-1/2 -translate-y-1/2 border-2 border-[#C8A2C8] rounded-full"
         />
       </motion.div>
     </>
