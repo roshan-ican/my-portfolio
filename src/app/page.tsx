@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import GitHubStats from "@/components/GithubStats";
+import CustomCursor from "@/components/CustomCursor";
 
 // Seeded random number generator for consistent values
 function seededRandom(seed: number) {
@@ -42,6 +43,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-gray-900 dark:via-gray-800 dark:to-black relative">
       {/* Animated background elements */}
+
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{
@@ -107,7 +109,7 @@ export default function Home() {
           />
         ))}
       </div>
-
+    <CustomCursor />
       <div className="relative z-10">
         <Navigation />
         <div className="relative">
