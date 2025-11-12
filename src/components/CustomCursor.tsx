@@ -5,12 +5,11 @@ import { motion, useMotionValue, useSpring, useVelocity } from "framer-motion";
 const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // --- CHANGE 1: Slower spring physics ---
-  // Increased damping/mass and decreased stiffness for a slower, "floatier" feel
   const springConfig = { damping: 60, stiffness: 100, mass: 2 };
   const mewX = useSpring(mouseX, springConfig); 
   const mewY = useSpring(mouseY, springConfig); 
@@ -21,7 +20,23 @@ const CustomCursor = () => {
   const [isMoving, setIsMoving] = useState(false);
   const [rotation, setRotation] = useState(0);
 
+  // Check for mobile device
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  useEffect(() => {
+    // Don't set up mouse listeners on mobile
+    if (isMobile) {
+      setIsVisible(false);
+      return;
+    }
+
     let lastX = 0;
     let moveTimer: NodeJS.Timeout;
 
@@ -68,11 +83,16 @@ const CustomCursor = () => {
       document.removeEventListener("mouseleave", handleMouseLeave);
       clearTimeout(moveTimer);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
+
+  // Don't render anything on mobile
+  if (isMobile) {
+    return null;
+  }
 
   return (
     <>
-      {/* Custom cursor styles */}
+      {/* Custom cursor styles - Desktop only */}
       <style jsx global>{`
         * {
           cursor: none !important;
@@ -117,7 +137,6 @@ const CustomCursor = () => {
           >
             {/* Mew Character */}
             <svg
-              // --- CHANGE 2: Smaller size ---
               width="42"
               height="40"
               viewBox="0 0 64 64"
@@ -204,7 +223,7 @@ const CustomCursor = () => {
                 }}
               />
               
-              {/* --- CHANGE 3: Show Feet More (Moved cy="52" to cy="56") --- */}
+              {/* Feet */}
               <motion.g
                 animate={isMoving ? {
                   y: [0, -4, 0],
@@ -292,4 +311,4 @@ const CustomCursor = () => {
   );
 };
 
-export default CustomCursor;
+export default CustomCursor
