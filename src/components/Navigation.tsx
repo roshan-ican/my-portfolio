@@ -16,19 +16,25 @@ const Navigation = () => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // --- 1. "Blog" has been added here ---
   const navItems = [
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Experience", href: "#experience" },
-    { name: "Projects", href: "#projects" },
+    // { name: "Projects", href: "#projects" },
+    { name: "Blog", href: "https://dev.to/roshan_ican" },
     { name: "Contact", href: "#contact" },
   ]
 
+  // --- 2. This function is updated to handle external links ---
   const scrollToSection = (href: string) => {
-    if (href.startsWith("/")) {
-      window.location.href = href
-    } else {
+    // Handle full external URLs (like your blog)
+    if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener noreferrer")
+    }
+    // Handle internal hash links
+    else if (href.startsWith("#")) {
       const element = document.querySelector(href)
       if (element) {
         const navHeight = 80
@@ -39,6 +45,10 @@ const Navigation = () => {
           behavior: "smooth",
         })
       }
+    }
+    // Handle other relative links
+    else if (href.startsWith("/")) {
+      window.location.href = href
     }
     setIsOpen(false)
   }
